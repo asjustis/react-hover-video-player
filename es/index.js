@@ -35,6 +35,8 @@ import { VIDEO_STATE, HOVER_PLAYER_STATE, SIZING_MODES, expandToFillContainerSty
  *                                                  it starts to gum up the works so that nothing loads properly and performance can degrade significantly.
  * @param {boolean} [muted=true] - Whether the video player should be muted
  * @param {boolean} [loop=true] - Whether the video player should loop when it reaches the end
+ * @param {boolean} [defaultControls=false] - whether to show standard video controls on screen
+ * @param {boolean} [playsInline=true] - whether to play inline or full-screen
  * @param {string}  [preload] - Sets how much information the video element should preload before being played. Accepts one of the following values:
  *                              - **"none"**: Nothing should be preloaded before the video is played
  *                              - **"metadata"**: Only the video's metadata (ie length, dimensions) should be preloaded
@@ -87,6 +89,10 @@ export default function HoverVideoPlayer(_ref) {
       loop = _ref$loop === void 0 ? true : _ref$loop,
       _ref$preload = _ref.preload,
       preload = _ref$preload === void 0 ? null : _ref$preload,
+      _ref$defaultControls = _ref.defaultControls,
+      defaultControls = _ref$defaultControls === void 0 ? false : _ref$defaultControls,
+      _ref$playsInline = _ref.playsInline,
+      playsInline = _ref$playsInline === void 0 ? true : _ref$playsInline,
       _ref$crossOrigin = _ref.crossOrigin,
       crossOrigin = _ref$crossOrigin === void 0 ? 'anonymous' : _ref$crossOrigin,
       _ref$className = _ref.className,
@@ -419,7 +425,8 @@ export default function HoverVideoPlayer(_ref) {
     "data-testid": "loading-overlay-wrapper"
   }, loadingOverlay), /*#__PURE__*/React.createElement("video", {
     loop: loop,
-    playsInline: true,
+    playsInline: playsInline,
+    controls: defaultControls,
     preload: preload,
     crossOrigin: crossOrigin,
     ref: videoRef,

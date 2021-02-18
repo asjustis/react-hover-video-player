@@ -42,6 +42,8 @@ import {
  *                                                  it starts to gum up the works so that nothing loads properly and performance can degrade significantly.
  * @param {boolean} [muted=true] - Whether the video player should be muted
  * @param {boolean} [loop=true] - Whether the video player should loop when it reaches the end
+ * @param {boolean} [defaultControls=false] - whether to show standard video controls on screen
+ * @param {boolean} [playsInline=true] - whether to play inline or full-screen
  * @param {string}  [preload] - Sets how much information the video element should preload before being played. Accepts one of the following values:
  *                              - **"none"**: Nothing should be preloaded before the video is played
  *                              - **"metadata"**: Only the video's metadata (ie length, dimensions) should be preloaded
@@ -80,6 +82,8 @@ export default function HoverVideoPlayer({
   muted = true,
   loop = true,
   preload = null,
+  defaultControls = false,
+  playsInline = true,
   crossOrigin = 'anonymous',
   className = '',
   style = null,
@@ -457,7 +461,8 @@ export default function HoverVideoPlayer({
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         loop={loop}
-        playsInline
+        playsInline={playsInline}
+        controls={defaultControls}
         preload={preload}
         crossOrigin={crossOrigin}
         ref={videoRef}
